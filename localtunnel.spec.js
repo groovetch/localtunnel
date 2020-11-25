@@ -25,7 +25,7 @@ before(done => {
 
 test('query localtunnel server w/ ident', async done => {
   const tunnel = await localtunnel({ port: fakePort });
-  assert.ok(new RegExp('^https://.*localtunnel.me$').test(tunnel.url));
+  assert.ok(new RegExp('^https://.*lt.groovetechnology.co$').test(tunnel.url));
 
   const parsed = url.parse(tunnel.url);
   const opt = {
@@ -58,14 +58,14 @@ test('request specific domain', async () => {
     .toString(36)
     .substr(2);
   const tunnel = await localtunnel({ port: fakePort, subdomain });
-  assert.ok(new RegExp(`^https://${subdomain}.localtunnel.me$`).test(tunnel.url));
+  assert.ok(new RegExp(`^https://${subdomain}.lt.groovetechnology.co$`).test(tunnel.url));
   tunnel.close();
 });
 
 describe('--local-host localhost', () => {
   test('override Host header with local-host', async done => {
     const tunnel = await localtunnel({ port: fakePort, local_host: 'localhost' });
-    assert.ok(new RegExp('^https://.*localtunnel.me$').test(tunnel.url));
+    assert.ok(new RegExp('^https://.*lt.groovetechnology.co$').test(tunnel.url));
 
     const parsed = url.parse(tunnel.url);
     const opt = {
@@ -97,7 +97,7 @@ describe('--local-host localhost', () => {
 describe('--local-host 127.0.0.1', () => {
   test('override Host header with local-host', async done => {
     const tunnel = await localtunnel({ port: fakePort, local_host: '127.0.0.1' });
-    assert.ok(new RegExp('^https://.*localtunnel.me$').test(tunnel.url));
+    assert.ok(new RegExp('^https://.*lt.groovetechnology.co$').test(tunnel.url));
 
     const parsed = url.parse(tunnel.url);
     const opt = {
@@ -129,7 +129,7 @@ describe('--local-host 127.0.0.1', () => {
 
   test('send chunked request', async done => {
     const tunnel = await localtunnel({ port: fakePort, local_host: '127.0.0.1' });
-    assert.ok(new RegExp('^https://.*localtunnel.me$').test(tunnel.url));
+    assert.ok(new RegExp('^https://.*lt.groovetechnology.co$').test(tunnel.url));
 
     const parsed = url.parse(tunnel.url);
     const opt = {
